@@ -9,11 +9,10 @@ Student student4 = new() { Id = "1000004", Name = "Nguyen Van B", Gender = true,
 
 List<Student> students = new() { student1, student2, student3, student4 };
 
-EnglishClass lopVan = new() { students = new() { student1, student2, student3 }, firstGrade = new(new double[3]), secondGrade = new(new double[3]) };
-MathClass lopToan = new() { students = new() { student2, student3, student4 }, firstGrade = new(new double[3]), secondGrade = new(new double[3]) };
+EnglishClass lopVan = new() { students = new() { student1, student2, student3 }, FirstGrade = new(new double[3]), SecondGrade = new(new double[3]) };
+MathClass lopToan = new() { students = new() { student2, student3, student4 }, FirstGrade = new(new double[3]), SecondGrade = new(new double[3]) };
 
 Menu();
-
 
 
 void Menu()
