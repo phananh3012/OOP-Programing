@@ -9,8 +9,8 @@ Student student4 = new() { Id = "1000004", Name = "Nguyen Van B", Gender = true,
 
 List<Student> students = new() { student1, student2, student3, student4 };
 
-EnglishClass lopVan = new() { students = new() { student1, student2, student3 }, FirstGrade = new(new double[3]), SecondGrade = new(new double[3]) };
-MathClass lopToan = new() { students = new() { student2, student3, student4 }, FirstGrade = new(new double[3]), SecondGrade = new(new double[3]) };
+EnglishClass englishClass = new() { students = new() { student1, student2, student3 }, FirstGrade = new(new double[3]), SecondGrade = new(new double[3]) };
+MathClass mathClass = new() { students = new() { student2, student3, student4 }, FirstGrade = new(new double[3]), SecondGrade = new(new double[3]) };
 
 Menu();
 
@@ -18,7 +18,7 @@ Menu();
 void Menu()
 {
 	bool flag = true;
-	while (flag == true)
+	while (flag)
 	{
 		Console.WriteLine("Menu quan ly sinh vien");
 		Console.WriteLine("1 - Xem danh sach sinh vien");
@@ -34,31 +34,26 @@ void Menu()
 				Display();
 				Console.ReadKey();
 				Console.Clear();
-				Menu();
 				break;
 			case "2":
 				DisplaySubjects();
 				Console.ReadKey();
 				Console.Clear();
-				Menu();
 				break;
 			case "3":
 				Grading();
 				Console.ReadKey();
 				Console.Clear();
-				Menu();
 				break;
 			case "4":
 				DisplayGrade();
 				Console.ReadKey();
 				Console.Clear();
-				Menu();
 				break;
 			case "5":
 				flag = false;
 				break;
 			default:
-				Menu();
 				break;
 		}
 	}
@@ -79,14 +74,14 @@ void DisplaySubjects()
 {
 	Console.WriteLine("Mon hoc sinh vien dang ky");
 	Console.WriteLine("Lop Toan:");
-	foreach (Student student in lopToan.students)
+	foreach (Student student in mathClass.students)
 	{
-		Console.WriteLine($"{lopToan.students.IndexOf(student)} - {student.Name}");
+		Console.WriteLine($"{mathClass.students.IndexOf(student)} - {student.Name}");
 	}
 	Console.WriteLine("Lop Van:");
-	foreach (Student student in lopVan.students)
+	foreach (Student student in englishClass.students)
 	{
-		Console.WriteLine($"{lopVan.students.IndexOf(student)} - {student.Name}");
+		Console.WriteLine($"{englishClass.students.IndexOf(student)} - {student.Name}");
 	}
 }
 
@@ -95,17 +90,17 @@ void Grading()
 	DisplaySubjects();
 	Console.WriteLine("\n1 - Nhap diem Toan");
 	Console.WriteLine("2 - Nhap diem Van");
-	string str = Console.ReadLine();
+	string? str = Console.ReadLine();
 	Console.WriteLine("Nhap STT sinh vien de nhap diem");
 	int i = Convert.ToInt32(Console.ReadLine());
 
 	switch (str)
 	{
 		case "1":
-			lopToan.InsertGrade(i);
+			mathClass.InsertGrade(i);
 			break;
 		case "2":
-			lopVan.InsertGrade(i);
+			englishClass.InsertGrade(i);
 			break;
 		default:
 			break;
@@ -115,8 +110,8 @@ void Grading()
 void DisplayGrade()
 {
 	Console.WriteLine("Diem mon Toan");
-	lopToan.DisplayGrade();
+	mathClass.DisplayGrade();
 	Console.WriteLine("Diem mon Van");
-	lopVan.DisplayGrade();
+	englishClass.DisplayGrade();
 
 }
